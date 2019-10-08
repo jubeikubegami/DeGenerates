@@ -12,12 +12,12 @@ var birdImg, pipeImg, groundImg, bgImg;
 
 
 function setup() {
-  createCanvas(400, 600);
+  createCanvas(800, 600);
 
-  birdImg = loadImage('assets/player.png');
-  pipeImg = loadImage('assets/pipe.jpg');
+  birdImg = loadImage('assets/flappy_bird.png');
+  pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
-  bgImg = loadImage('assets/whitehouse.jpg');
+  bgImg = loadImage('assets/background.png');
 
   bird = createSprite(width/2, height/2, 40, 40);
   bird.rotateToDirection = true;
@@ -87,7 +87,7 @@ function draw() {
 
   background(247, 134, 131);
   camera.off();
-  image(bgImg, 0, GROUND_Y-190);
+  image(bgImg, 0, GROUND_Y-450);
   camera.on();
 
   drawSprites(pipes);
@@ -108,7 +108,7 @@ function newGame() {
   bird.position.y = height/2;
   bird.velocity.y = 0;
   ground.position.x = 800/2;
-  ground.position.y = GROUND_Y+100;
+  ground.position.y = GROUND_Y+150;
 }
 
 function mousePressed() {
