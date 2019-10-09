@@ -11,16 +11,21 @@ var gameOver;
 var birdImg, pipeImg, groundImg, bgImg;
 var chaChing;
 var deathScream;
+var jump;
+var music;
 
 function preload(){
   chaChing = loadSound ("assets/chaChing.m4a")
   deathScream = loadSound ("assets/scream.wav")
+  jump = loadSound ("assets/jump.wav")
+  music = loadSound ("assets/bensound-theelevatorbossanova.mp3")
 }
 
 function setup() {
   createCanvas(800, 600);
 
-  birdImg = loadImage('assets/flappy_bird.png');
+  music.play();
+  birdImg = loadImage('assets/biden.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
@@ -83,6 +88,7 @@ function draw() {
     for(var i = 0; i<pipes.length; i++)
       if(pipes[i].position.x < bird.position.x-width/2)
         pipes[i].remove();
+
   }
 
   camera.position.x = bird.position.x + width/4;
@@ -123,4 +129,6 @@ function mousePressed() {
   if(gameOver)
     newGame();
   bird.velocity.y = FLAP;
+  //play jump sound when click
+  jump.play();
 }
