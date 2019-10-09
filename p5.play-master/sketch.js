@@ -19,9 +19,45 @@ function preload(){
   deathScream = loadSound ("assets/scream.wav")
   jump = loadSound ("assets/jump.wav")
   music = loadSound ("assets/bensound-theelevatorbossanova.mp3")
+
+  //my table is comma separated value "csv"
+  //and has a header specifying the columns labels
+  president_primary_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/president_primary_polls.csv', 'csv', 'header');
+  president_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/president_polls.csv', 'csv', 'header');
+  senate_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/senate_polls.csv', 'csv', 'header');
+  house_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/house_polls.csv', 'csv', 'header');
+  governor_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/governor_polls.csv', 'csv', 'header');
+  president_approval_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/president_approval_polls.csv', 'csv', 'header');
+  generic_ballot_polls_table = loadTable('https://projects.fivethirtyeight.com/polls-page/generic_ballot_polls.csv', 'csv', 'header');
+  //the file can be remote
+  //table = loadTable("http://p5js.org/reference/assets/mammals.csv",
+  //                  "csv", "header");
 }
 
 function setup() {
+  print(president_primary_polls_table.getRowCount() + ' total rows in president_primary_polls_table');
+  print(president_primary_polls_table.getColumnCount() + ' total columns in president_primary_polls_table');
+
+  print(president_polls_table.getRowCount() + ' total rows in president_polls_table');
+  print(president_polls_table.getColumnCount() + ' total columns in president_polls_table');
+
+  print(president_approval_polls_table.getRowCount() + ' total rows in president_approval_polls_table');
+  print(president_approval_polls_table.getColumnCount() + ' total columns in president_approval_polls_table');
+
+  print(senate_polls_table.getRowCount() + ' total rows in senate_polls_table');
+  print(senate_polls_table.getColumnCount() + ' total columns in senate_polls_table');
+
+  print(house_polls_table.getRowCount() + ' total rows in house_polls_table');
+  print(house_polls_table.getColumnCount() + ' total columns in house_polls_table');
+
+  print(governor_polls_table.getRowCount() + ' total rows in governor_polls_table');
+  print(governor_polls_table.getColumnCount() + ' total columns in governor_polls_table');
+
+  print(generic_ballot_polls_table.getRowCount() + ' total rows in generic_ballot_polls_table');
+  print(generic_ballot_polls_table.getColumnCount() + ' total columns in generic_ballot_polls_table');
+
+  print(president_primary_polls_table.getColumn('answer'));
+  
   createCanvas(800, 600);
 
   music.play();
