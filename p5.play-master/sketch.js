@@ -9,7 +9,13 @@ var bird, ground;
 var pipes;
 var gameOver;
 var birdImg, pipeImg, groundImg, bgImg;
+var chaChing;
+var deathScream;
 
+function preload(){
+  chaChing = loadSound ("assets/chaChing.m4a")
+  deathScream = loadSound ("assets/scream.wav")
+}
 
 function setup() {
   createCanvas(800, 600);
@@ -98,6 +104,8 @@ function draw() {
 function die() {
   updateSprites(false);
   gameOver = true;
+  //play sound on death
+  deathScream.play();
 }
 
 function newGame() {
