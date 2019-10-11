@@ -13,6 +13,10 @@ var chaChing;
 var deathScream;
 var jump;
 var music;
+// let TrumpPct = [];
+var bidenPctSum = 0;
+var bidenPctAvg;
+var bidenCount = 0;
 
 function preload(){
   chaChing = loadSound ("assets/chaChing.m4a")
@@ -35,33 +39,60 @@ function preload(){
 }
 
 function setup() {
-  print(president_primary_polls_table.getRowCount() + ' total rows in president_primary_polls_table');
-  print(president_primary_polls_table.getColumnCount() + ' total columns in president_primary_polls_table');
-
+  // print(president_primary_polls_table.getRowCount() + ' total rows in president_primary_polls_table');
+  // print(president_primary_polls_table.getColumnCount() + ' total columns in president_primary_polls_table');
+  //
   print(president_polls_table.getRowCount() + ' total rows in president_polls_table');
   print(president_polls_table.getColumnCount() + ' total columns in president_polls_table');
+  print("---")
+  //
+  // print(president_approval_polls_table.getRowCount() + ' total rows in president_approval_polls_table');
+  // print(president_approval_polls_table.getColumnCount() + ' total columns in president_approval_polls_table');
+  //
+  // print(senate_polls_table.getRowCount() + ' total rows in senate_polls_table');
+  // print(senate_polls_table.getColumnCount() + ' total columns in senate_polls_table');
+  //
+  // print(house_polls_table.getRowCount() + ' total rows in house_polls_table');
+  // print(house_polls_table.getColumnCount() + ' total columns in house_polls_table');
+  //
+  // print(governor_polls_table.getRowCount() + ' total rows in governor_polls_table');
+  // print(governor_polls_table.getColumnCount() + ' total columns in governor_polls_table');
+  //
+  // print(generic_ballot_polls_table.getRowCount() + ' total rows in generic_ballot_polls_table');
+  // print(generic_ballot_polls_table.getColumnCount() + ' total columns in generic_ballot_polls_table');
 
-  print(president_approval_polls_table.getRowCount() + ' total rows in president_approval_polls_table');
-  print(president_approval_polls_table.getColumnCount() + ' total columns in president_approval_polls_table');
+  // print(president_primary_polls_table.getColumn('answer'));
 
-  print(senate_polls_table.getRowCount() + ' total rows in senate_polls_table');
-  print(senate_polls_table.getColumnCount() + ' total columns in senate_polls_table');
+  // print("Donald Trump at row 1");
+  // print(president_polls_table.get(1,35));
+  // //Trump at all odd number rows
+  //
+  // for (let i = 1; i <= president_polls_table.getRowCount(); i=i+2) { //get all odd numbers
+  //   print("Donald Trump at row " + i);
+  //   print(president_polls_table.get(i,35));
+  // }
 
-  print(house_polls_table.getRowCount() + ' total rows in house_polls_table');
-  print(house_polls_table.getColumnCount() + ' total columns in house_polls_table');
+  print("All percentages from Biden:");
+  for (let i = 0; i < president_polls_table.getRowCount(); i++) {
+    if (president_polls_table.get(i,32) == "Biden") {
+      print(president_polls_table.get(i,35));
+      bidenPctSum = float(bidenPctSum) + float(president_polls_table.get(i,35));
+      bidenCount = bidenCount + 1;
+    }//all c
+  }
 
-  print(governor_polls_table.getRowCount() + ' total rows in governor_polls_table');
-  print(governor_polls_table.getColumnCount() + ' total columns in governor_polls_table');
+  bidenPctAvg = bidenPctSum / bidenCount;
+  print("Biden percentage - Sum");
+  print(bidenPctSum);
+  print("Biden percentage - Average");
+  print(bidenPctAvg);
+  print("Biden - counts");
+  print(bidenCount);
 
-  print(generic_ballot_polls_table.getRowCount() + ' total rows in generic_ballot_polls_table');
-  print(generic_ballot_polls_table.getColumnCount() + ' total columns in generic_ballot_polls_table');
-
-  print(president_primary_polls_table.getColumn('answer'));
-  
   createCanvas(800, 600);
 
   music.play();
-  birdImg = loadImage('assets/trump.png');
+  birdImg = loadImage('assets/warren.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
