@@ -61,7 +61,7 @@ function setup() {
   createCanvas(800, 600);
 
   music.play();
-  birdImg = loadImage('assets/biden.png');
+  birdImg = loadImage('assets/trump.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
