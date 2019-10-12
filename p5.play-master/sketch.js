@@ -71,10 +71,40 @@ function setup() {
   updateSprites(false);
 
   camera.position.y = height/2;
+
+  //changing character to Pete Buttigieg
+button = createButton("buttigieg");
+button.mousePressed(changeButtigieg);
+  //changing character to Kamala Harris
+button = createButton("harris");
+button.mousePressed(changeHarris);
+  //changing character to Amy Klobuchar
+button = createButton("klobuchar");
+button.mousePressed(changeKlobuchar);
+  //changing character to Beto O'rourke
+button = createButton("orourke");
+button.mousePressed(changeOrourke);
+  //changing character to Donald Trump
+button = createButton("trump");
+button.mousePressed(changeTrump);
+  //changing character to Joe Biden
+button = createButton("biden");
+button.mousePressed(changeBiden);
+  //changing character to Corey Booker
+button = createButton("booker");
+button.mousePressed(changeBooker);
+  //changing character to Bernie Sanders
+button = createButton("sanders");
+button.mousePressed(changeSanders);
+  //changing character to Elizabeth Warren
+button = createButton("warren");
+button.mousePressed(changeWarren);
   //changing character to Andrew Yang
 button = createButton("yang");
 button.mousePressed(changeYang);
+
 }
+
 
 
 function draw() {
@@ -98,14 +128,14 @@ function draw() {
     if(bird.overlap(pipes))
       die();
 
-    //spawn pipes
+    //spawn obstacles
     if(frameCount%60 == 0) {
       var pipeH = random(50, 300);
       var pipe = createSprite(bird.position.x + width, GROUND_Y-pipeH/2+1+100, 80, pipeH);
       pipe.addImage(pipeImg);
       pipes.add(pipe);
 
-      //top pipe
+      //top obstacle
       if(pipeH<200) {
         pipeH = height - (height-GROUND_Y)-(pipeH+MIN_OPENING);
         pipe = createSprite(bird.position.x + width, pipeH/2-100, 80, pipeH);
@@ -115,7 +145,7 @@ function draw() {
       }
     }
 
-    //get rid of passed pipes
+    //get rid of passed obstacles
     for(var i = 0; i<pipes.length; i++)
       if(pipes[i].position.x < bird.position.x-width/2)
         pipes[i].remove();
