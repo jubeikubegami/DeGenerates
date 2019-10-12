@@ -15,9 +15,13 @@ var jump;
 var music;
 var button;
 // let TrumpPct = [];
-var bidenPctSum = 0;
-var bidenPctAvg;
-var bidenCount = 0;
+var pctSum = 0;
+var pctAvg;
+var count = 0;
+
+var currentCandidate = "Biden";
+
+// let button, greeting;
 
 function preload(){
   chaChing = loadSound ("assets/chaChing.m4a")
@@ -40,67 +44,22 @@ function preload(){
 }
 
 function setup() {
-  // print(president_primary_polls_table.getRowCount() + ' total rows in president_primary_polls_table');
-  // print(president_primary_polls_table.getColumnCount() + ' total columns in president_primary_polls_table');
-  //
-  print(president_polls_table.getRowCount() + ' total rows in president_polls_table');
-  print(president_polls_table.getColumnCount() + ' total columns in president_polls_table');
-  print("---")
-  //
-  // print(president_approval_polls_table.getRowCount() + ' total rows in president_approval_polls_table');
-  // print(president_approval_polls_table.getColumnCount() + ' total columns in president_approval_polls_table');
-  //
-  // print(senate_polls_table.getRowCount() + ' total rows in senate_polls_table');
-  // print(senate_polls_table.getColumnCount() + ' total columns in senate_polls_table');
-  //
-  // print(house_polls_table.getRowCount() + ' total rows in house_polls_table');
-  // print(house_polls_table.getColumnCount() + ' total columns in house_polls_table');
-  //
-  // print(governor_polls_table.getRowCount() + ' total rows in governor_polls_table');
-  // print(governor_polls_table.getColumnCount() + ' total columns in governor_polls_table');
-  //
-  // print(generic_ballot_polls_table.getRowCount() + ' total rows in generic_ballot_polls_table');
-  // print(generic_ballot_polls_table.getColumnCount() + ' total columns in generic_ballot_polls_table');
-
-  // print(president_primary_polls_table.getColumn('answer'));
-
-  // print("Donald Trump at row 1");
-  // print(president_polls_table.get(1,35));
-  // //Trump at all odd number rows
-  //
-  // for (let i = 1; i <= president_polls_table.getRowCount(); i=i+2) { //get all odd numbers
-  //   print("Donald Trump at row " + i);
-  //   print(president_polls_table.get(i,35));
-  // }
-
-  print("All percentages from Biden:");
-  for (let i = 0; i < president_polls_table.getRowCount(); i++) {
-    if (president_polls_table.get(i,32) == "Biden") {
-      print(president_polls_table.get(i,35));
-      bidenPctSum = float(bidenPctSum) + float(president_polls_table.get(i,35));
-      bidenCount = bidenCount + 1;
-    }//all c
-  }
-
-  bidenPctAvg = bidenPctSum / bidenCount;
-  print("Biden percentage - Sum");
-  print(bidenPctSum);
-  print("Biden percentage - Average");
-  print(bidenPctAvg);
-  print("Biden - counts");
-  print(bidenCount);
 
   createCanvas(800, 600);
 
+  updateData();
+
   music.play();
-  birdImg = loadImage('assets/warren.png');
+  birdImg = loadImage('assets/trump.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
 
   bird = createSprite(width/2, height/2, 40, 40);
   bird.rotateToDirection = true;
-  bird.velocity.x = 4;
+  // bird.velocity.x = pctAvg/5;
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
   bird.setCollider('circle', 0, 0, 20);
   bird.addImage(birdImg);
 
@@ -205,7 +164,50 @@ function mousePressed() {
   //play jump sound when click
   jump.play();
 }
+
 function changeYang(){
-birdImg = loadImage('assets/yang.png');
-bird.addImage(birdImg);
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/yang.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Yang";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function updateData() {
+  //UPDATE DATA
+  print(president_polls_table.getRowCount() + ' total rows in president_polls_table');
+  print(president_polls_table.getColumnCount() + ' total columns in president_polls_table');
+  print("---")
+
+  print("All percentages from " + currentCandidate + " :");
+  for (let i = 0; i < president_polls_table.getRowCount(); i++) {
+    if (president_polls_table.get(i,32) == currentCandidate) {
+      print(president_polls_table.get(i,35));
+      pctSum = float(pctSum) + float(president_polls_table.get(i,35));
+      count = count + 1;
+    }//all c
+  }
+
+  pctAvg = pctSum / count;
+  print(currentCandidate + " percentage - Sum");
+  print(pctSum);
+  print(currentCandidate + " percentage - Average");
+  print(pctAvg);
+  print(currentCandidate + " - counts");
+  print(count);
+
+  //---
+}
+
+function updateVelocityX() {
+  bird.velocity.x = pctAvg/5;
+  print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
 }
