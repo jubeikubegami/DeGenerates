@@ -50,7 +50,7 @@ function setup() {
   updateData();
 
   music.play();
-  birdImg = loadImage('assets/trump.png');
+  birdImg = loadImage('assets/biden.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
@@ -195,6 +195,8 @@ function mousePressed() {
   jump.play();
 }
 
+// all candidates
+
 function changeYang(){
   //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
   count = 0;
@@ -204,6 +206,150 @@ function changeYang(){
   birdImg = loadImage('assets/yang.png');
   bird.addImage(birdImg);
   currentCandidate = "Yang";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeButtigieg(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/buttigieg.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Buttigieg";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeHarris(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/harris.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Harris";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeKlobuchar(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/klobuchar.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Klobuchar";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeOrourke(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/orourke.png');
+  bird.addImage(birdImg);
+  currentCandidate = "O'Rourke";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeTrump(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/trump.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Trump";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeBiden(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/biden.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Biden";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeBooker(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/booker.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Booker";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeSanders(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/sanders.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Sanders";
+  print("Change currentCandidate to " + currentCandidate + ".");
+  // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
+  updateData();
+  // print("Velocity is now " + bird.velocity.x + " for " + currentCandidate + ".");
+  updateVelocityX();
+}
+
+function changeWarren(){
+  //reset all variables regarding datasets, or it will be ADDED with the previous candidate.
+  count = 0;
+  pctSum = 0;
+  pctAvg = 0;
+
+  birdImg = loadImage('assets/warren.png');
+  bird.addImage(birdImg);
+  currentCandidate = "Warren";
   print("Change currentCandidate to " + currentCandidate + ".");
   // by calling "updateData()", these variables will be re-calculated after "yang" was clicked.
   updateData();
