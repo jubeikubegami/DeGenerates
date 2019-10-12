@@ -13,6 +13,7 @@ var chaChing;
 var deathScream;
 var jump;
 var music;
+var button;
 // let TrumpPct = [];
 var bidenPctSum = 0;
 var bidenPctAvg;
@@ -124,7 +125,11 @@ function setup() {
   updateSprites(false);
 
   camera.position.y = height/2;
+  //changing character to Andrew Yang
+button = createButton("yang");
+button.mousePressed(changeYang);
 }
+
 
 function draw() {
 
@@ -169,6 +174,7 @@ function draw() {
       if(pipes[i].position.x < bird.position.x-width/2)
         pipes[i].remove();
 
+
   }
 
   camera.position.x = bird.position.x + width/4;
@@ -211,4 +217,8 @@ function mousePressed() {
   bird.velocity.y = FLAP;
   //play jump sound when click
   jump.play();
+}
+function changeYang(){
+birdImg = loadImage('assets/yang.png');
+bird.addImage(birdImg);
 }
