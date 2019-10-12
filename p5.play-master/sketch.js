@@ -18,6 +18,8 @@ var bidenPctSum = 0;
 var bidenPctAvg;
 var bidenCount = 0;
 
+let button, greeting;
+
 function preload(){
   chaChing = loadSound ("assets/chaChing.m4a")
   deathScream = loadSound ("assets/scream.wav")
@@ -39,6 +41,17 @@ function preload(){
 }
 
 function setup() {
+
+  createCanvas(800, 600);
+
+  //select candidates.
+  button = createButton('Biden');
+  button.position(10, 65);
+  // button.mousePressed(greet);
+
+  greeting = createElement('h2', 'Select a candidate.');
+  greeting.position(20, 5);
+
   // print(president_primary_polls_table.getRowCount() + ' total rows in president_primary_polls_table');
   // print(president_primary_polls_table.getColumnCount() + ' total columns in president_primary_polls_table');
   //
@@ -89,17 +102,17 @@ function setup() {
   print("Biden - counts");
   print(bidenCount);
 
-  createCanvas(800, 600);
+  //---
 
   music.play();
-  birdImg = loadImage('assets/warren.png');
+  birdImg = loadImage('assets/trump.png');
   pipeImg = loadImage('assets/pipe.png');
   groundImg = loadImage('assets/ground.png');
   bgImg = loadImage('assets/background.png');
 
   bird = createSprite(width/2, height/2, 40, 40);
   bird.rotateToDirection = true;
-  bird.velocity.x = 4;
+  bird.velocity.x = 4 * bidenPctAvg/100;
   bird.setCollider('circle', 0, 0, 20);
   bird.addImage(birdImg);
 
